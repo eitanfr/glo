@@ -27,10 +27,15 @@ export class MainMapComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     const viewer = this.mapManager.getMap().getCesiumViewer();
     viewer.imageryLayers.addImageryProvider(
-      new CartoDBImageryProvider({
-        url: 'http://{s}.basemaps.cartocdn.com/pitney-bowes-dark/{z}/{x}/{y}.png',
-        credit: 'Basemap courtesy of CartoDB',
-      }),
+      // new CartoDBImageryProvider({
+      //   url: 'http://{s}.basemaps.cartocdn.com/pitney-bowes-dark/{z}/{x}/{y}.png',
+      //   credit: 'Basemap courtesy of CartoDB',
+      // }),
+      new Cesium.BingMapsImageryProvider({
+        url : 'https://dev.virtualearth.net',
+        key : 'AkGl38RRqS1Ro1u-UFgmJNXexs6h5loP3UTQrXKSqxOO9D4YGLr_3IJJutQTHJfu',
+        mapStyle : Cesium.BingMapsStyle.CANVAS_DARK
+      })
     );
   }
 }
